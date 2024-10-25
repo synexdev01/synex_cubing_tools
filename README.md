@@ -33,6 +33,7 @@ You can read them [by clicking here](https://github.com/synexcoder01/synex_cubin
 # Upcoming things
 
 - Import cstimer.net .json files.
+- Export cstimer.net .json files.
 - GUI (graphical user interface).
 - Being able to create other types of puzzle sessions (2x2x2, 4x4x4, 5x5x5, etc.)
 
