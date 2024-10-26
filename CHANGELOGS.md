@@ -23,7 +23,6 @@
 - Fixed a bug, where you couldn't continue a session you just created, because it couldn't understand the header of the saved file.
 
 ## [v0.4_alpha 2024.10.24](https://github.com/synexcoder01/synex_cubing_tools/releases/tag/v0.4_alpha)
-### Please note that the old save files are not compatible with the new version.
 - Updated the save file format with adding a new line, that says the type of the session.
 - Added the ability to choose the type of the session you want to create.
 - You can now choose from 222, 333 and 444.
