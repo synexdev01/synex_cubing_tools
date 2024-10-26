@@ -32,10 +32,12 @@ You can read them [by clicking here](https://github.com/synexcoder01/synex_cubin
 
 # Upcoming things
 
-- Import cstimer.net .json files.
-- Export cstimer.net .json files.
+- Import cstimer.net files.
+- Export cstimer.net files.
 - GUI (graphical user interface).
 - Being able to create other types of puzzle sessions (5x5x5, 6x6x6, pyraminx, etc.)
+- Being able to add penalties to solves.
+- Beaing able to delete individual solves.
 
 # We'd love to hear your feedback and suggestions!
 
