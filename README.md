@@ -47,6 +47,6 @@ You can read them [by clicking here](https://github.com/synexcoder01/synex_cubin
 
 # FAQ
 
-Q: How can I export .json files on cstimer.net
+Q: How can I export session from cstimer.net?
 
-A: Click on export, then file, and the exported .json file should be in your download folder.
+A: Click on export, then file, and the exported file should be in your download folder.
