@@ -11,7 +11,6 @@ else:
 os.system('cls')
 
 def new_session():
-    all_scrambles = []
     os.system('cls')
     print("You chose to start a new session.\n")
 
@@ -363,7 +362,7 @@ def view_statistics():
     print("Your best AO12: ",best_ao12,"\n",sep='')
     print("Your best AO100: ",best_ao100,"\n",sep='')
 
-    go_back = input("Press enter, to go back to the main menu.\n")
+    _go_back = input("Press enter, to go back to the main menu.\n")
 
 def import_session():
     os.system('cls')
@@ -374,7 +373,6 @@ def import_session():
         os.system('cls')
         print("You chose to proceed.\n")
         print("Please provide the name of the session you want to import the session into.")
-        internal_session_name = input()
     else:
         os.system('cls')
         print("You did not choose to proceed. Returning to main menu...\n")
