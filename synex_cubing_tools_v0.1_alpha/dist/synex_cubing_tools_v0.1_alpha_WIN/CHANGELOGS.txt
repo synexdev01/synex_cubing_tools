@@ -1,5 +1,0 @@
-v0.1_alpha 2024.10.15
-- I started the project.
-- I added the main menu.
-- I added the ability to start a new session, or continue an existing one.
-- I added the ability to manage your sessions (delete, rename).
