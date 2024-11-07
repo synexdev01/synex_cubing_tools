@@ -1,2 +1,1 @@
-## Don't download the entire source code, if you need it. Go into the files, open the desired versions folder, and download the python file. 
-## Please note, that you need to have an "import_sessions", a "your_sessions" and a "dev_files/scrambles" folder with all the files inside of it (if you see a test_sessions folder, you don't need that) next to your script, to make it work. I can't upload the first two to github, because they are empty, and you need to create them manually along with the third one, and download all of the scrambles from the "dev_files/scrambles" folder.
+## The fill files is just for that i can upload empty folders to github!
