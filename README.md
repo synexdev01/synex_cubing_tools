@@ -1,6 +1,5 @@
-# Pre-release!!!
+![image](https://github.com/user-attachments/assets/885d2007-7ab2-428e-9b27-77b52d8e894d)
 
-Please note, that while the software is in pre-release, your saved sessions could not be compatible with the new version, as I update the saving system!
 
 # The idea
 
