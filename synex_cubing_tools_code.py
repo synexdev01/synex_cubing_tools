@@ -1,3 +1,4 @@
+import json
 import os
 import random
 import datetime
@@ -26,13 +27,13 @@ def new_session():
     print("\nPlease provide the name of the session you want to create.\n")
     session_name = input()
     session_name = session_name.replace(" ", "_")
-
-    session_path = os.path.join(script_dir, "your_sessions", f"{session_name}.csv")
     
     if os.path.exists(session_path):
         os.system('cls')
         print("This session is already existing. Please continue an existing session. Returning to the main menu...\n")
         return
+
+    session_path = os.path.join(script_dir, "your_sessions", f"{session_name}.csv")
     
     with open(session_path, "w", encoding="utf-8") as session_file:
         session_file.write(f'{session_type}\n')
@@ -363,20 +364,108 @@ def view_statistics():
     print("Your best AO100: ",best_ao100,"\n",sep='')
 
     _go_back = input("Press enter, to go back to the main menu.\n")
+    os.system('cls')
+    return
+
 
 def import_session():
     os.system('cls')
-    print("You chose to import an external cstimer.net .json session into one of your existing sessions.")
-    print("READ CAREFULLY!\nPlease have the file you want to import, in the 'import_session' folder.\nMake sure it is named 'import.json'\nConfirm, that it is formatted in the correct way.\nMake sure, you only have one file in the 'import_session' folder.\nOnly import json files, that are cstimer.net standards. We will support more types of files, in future updates.\nPlease aknowledge, that if you mess up one of the steps, your sessions can be permanently corrupted. The developers are not responsible for any data loss!\nType anything that is not 'yes', and you will be directed back to the main menu, exit the program, and do these steps. When you are done, come back here. If you want to proceed, then type 'yes'.")
+    print("READ CAREFULLY!\nPlease have the file you want to import, in the 'import_session' folder.\nMake sure it is named 'import.txt'\nConfirm, that it is formatted in the correct way.\nMake sure, you only have one file named 'import.txt' in the 'import_session' folder.\nOnly import txt files, that are cstimer.net standards. We will support more types of files, in future updates.\nPlease aknowledge, that if you mess up one of the steps, your sessions can be permanently corrupted. The developers are not responsible for any data loss!\nType anything that is not 'yes', and you will be directed back to the main menu, exit the program, and do these steps. When you are done, come back here. If you want to proceed, then type 'yes'.\n")
     import_confirmation = input()
     if import_confirmation == "yes":
         os.system('cls')
         print("You chose to proceed.\n")
-        print("Please provide the name of the session you want to import the session into.")
+        
+        print("Please provide the type of the session you want to create. (222, 333, 444)\n")
+        tmp_session_type = input()
+        if tmp_session_type == "222" or tmp_session_type == "333" or tmp_session_type == "444":
+            session_type = tmp_session_type
+        else:
+            os.system('cls')
+            print("You did not provide a valid session type. Returning to the main menu...\n")
+            return
+        
+        print("Please provide a name for the session you want to import.\n")
+        session_name = input()
+        session_name = session_name.replace(" ", "_")
+        if os.path.exists(os.path.join(script_dir, "your_sessions", f"{session_name}.csv")):
+            os.system('cls')
+            print("This session is already existing. Please choose a different name. Returning to the main menu...\n")
+            return
+        
+        session_number = input("Please specify the session number you want to import from (1-15)\n\n").strip()
     else:
         os.system('cls')
         print("You did not choose to proceed. Returning to main menu...\n")
         return
+
+    os.system('cls')
+    print("Working...\n")
+
+    import_file_path = os.path.join(script_dir, "import_sessions", "import.txt")
+    sessions_dir = os.path.join(script_dir, "your_sessions")
+
+    if not os.path.exists(import_file_path):
+        os.system('cls')
+        print("The import file does not exist. Returning to the main menu...\n")
+        return
+    else:
+        # Read the import file
+        with open(import_file_path, "r", encoding="utf-8") as import_file:
+            data = json.load(import_file)
+
+        if not session_number.isdigit() or not (1 <= int(session_number) <= 15):
+            os.system('cls')
+            print("Invalid session number. Returning to the main menu...\n")
+            return
+        else:
+            session_type = f"session{session_number}"
+            scrambles = data[session_type]
+
+            session_path = os.path.join(sessions_dir, f"{session_name}.csv")
+
+            if os.path.exists(session_path):
+                os.system('cls')
+                print("This session already exists. Please choose a different name. Returning to the main menu...\n")
+                return
+            else:
+                with open(session_path, "w", encoding="utf-8") as session_file:
+                    session_file.write(f'{session_type}\n')
+                    session_file.write('No.;Time;Scramble;Date;\n')
+                    for i, scramble_data in enumerate(scrambles, start=1):
+                        # Debugging output to check the structure of scramble_data
+                        print(f"Scramble data for index {i}: {scramble_data}")
+
+                        time = scramble_data[0]
+                        scramble = scramble_data[1].lstrip()
+
+                        if isinstance(time, list) and len(time) >= 2:
+                            time_before_decimal = time[0]
+                            time_after_decimal = time[1]
+
+                            time = float(f"{time_before_decimal}.{time_after_decimal}")
+                        else:
+                            print(f"Unexpected time format for index {i}: {time}")  # Debugging output
+                            time = 0.0
+
+                        try:
+                            formatted_time = round(time, 2) if time else 0.0
+                        except ValueError:
+                            print(f"Error converting time for index {i}: {time}")  # Debugging output
+                            formatted_time = 0.0
+
+                        session_file.write(f'{i};{formatted_time:.2f};{scramble};0;\n')
+
+                os.system('cls')
+                print(f"The session '{session_name}' was successfully created and data imported.\n")
+                print("Do you want to delete the import file? (yes/anything else)\n")
+                delete_import_file = input()
+                if delete_import_file == "yes":
+                    os.remove(import_file_path)
+                    print("The import file was successfully deleted.\n")
+                print("Returning to the main menu...\n")
+                return
+
 
 def manage_sessions():
     os.system('cls')
@@ -438,7 +527,7 @@ def manage_sessions():
 #main menu def
 
 def main_menu():
-    print("What do you want to do? (Choose a number)\n\n1: Start a new, or continue an existing session.\n2: View your statistics.\n3: Import an external (csv) session into one of your existing sessions.\n4: Manage your sessions.\n")
+    print("What do you want to do? (Choose a number)\n\n1: Start a new, or continue an existing session.\n2: View your statistics.\n3: Import a cstimer.net session.\n4: Manage your sessions.\n")
     main_menu_question = input()
 
     if main_menu_question == "1":
@@ -463,6 +552,9 @@ def main_menu():
     elif main_menu_question == "4":
         manage_sessions()
 
+    else:
+        os.system('cls')
+        print("You did not choose a valid option. Returning to main menu...\n")
 #main program
 while True:
     main_menu()
