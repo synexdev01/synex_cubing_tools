@@ -14,7 +14,7 @@ Save files older than v0.4 are not compatible with the new versions.
 
 ## How to download?
 
-### [Click here to access the releases](https://github.com/synexcoder01/synex_cubing_tools/releases)
+[Click here to access the releases](https://github.com/synexcoder01/synex_cubing_tools/releases)
 
 ## What you need?
 
