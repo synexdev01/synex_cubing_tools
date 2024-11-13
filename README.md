@@ -2,10 +2,6 @@
 
 A fully open-source software, written in python and it runs locally. You can save your times with it into csv files, which you can backup manually, wherever you want. Also if you are missing a feature, you can submit a suggestion [here](https://forms.gle/JajjEokWRGWQeieD9), or if you have the knowledge, you can complete my code with your desired feature. Then if you want to share it with me, upload it to a cloud drive like google drive or onedrive or etc., then share the link in google forms. I will appreciate it!
 
-## For the developers
-
-[Click here](https://github.com/synexdev01/synex_cubing_tools/blob/main/DEV_README.md) and read the text before you do anything.
-
 # User manual
 
 ![image](https://github.com/user-attachments/assets/885d2007-7ab2-428e-9b27-77b52d8e894d)
@@ -38,9 +34,14 @@ You can read them [by clicking here](https://github.com/synexcoder01/synex_cubin
 - Being able to add penalties to solves.
 - Beaing able to delete individual solves.
 
+# Contributing as a developer
+
+Developers are allowed to fork the repository or send pull requests directly to this repository.
+
 # We'd love to hear your feedback and suggestions!
 
-[Google forms](https://forms.gle/JajjEokWRGWQeieD9)
+- Create an issue!
+- [Fill out my google forms](https://forms.gle/JajjEokWRGWQeieD9)
 
 # FAQ
 
