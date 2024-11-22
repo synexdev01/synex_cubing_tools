@@ -52,4 +52,4 @@
 
 ## [v1.0.1 - 2024.11.22](https://github.com/synexcoder01/synex_cubing_tools/releases/tag/v1.0.1)
 ### Bugfixes:
-- Fixed a bug, where the software crashed, because the session's directory path was not defined.
+- Fixed a bug, where the software crashed when you were creating a new session, because the session's directory path was not defined.
